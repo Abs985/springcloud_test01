@@ -1,0 +1,19 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    service-url:
+      defaultZone:  http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+
+ribbon:
+  ReadTimeout: 5000 # 从服务器读取可用资源需要花费的时间
+  ConnectTimeout: 5000  # 建立连接需要的时间，两端连接需要的时间
+
+#  feign.client.config.my-api.connectTimeout = 10000
+logging:
+  level:
+    # 指定日志监控那个接口,并设置监控级别
+    com.northbear.springcloud.service.PaymentFeignService: debug
