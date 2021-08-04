@@ -27,8 +27,8 @@ public class PaymentService {
     }
 
     /**
-     * 访问失败
      *
+     * 模拟服务降级的情况：访问失败，线程睡五秒，但是设定的允许等待时间只有3秒
      * @param id
      * @return
      */
@@ -38,7 +38,7 @@ public class PaymentService {
     }) // 下方代码出问题，指定fallbackMethod方法兜底
     public String paymentInfo_TimeOut(Integer id) {
 //        int a=10/0;// 也是执行指定的报错方法
-        int timeNumber = 2;
+        int timeNumber = 5;
         try {
             TimeUnit.SECONDS.sleep(timeNumber);
         } catch (InterruptedException e) {
@@ -53,6 +53,12 @@ public class PaymentService {
     }
 
     //==========================服务熔断
+
+    /**
+     *
+     * @param id
+     * @return  服务熔断的情况
+     */
     @HystrixCommand(fallbackMethod = "paymentCircuitBreaker_fallback", commandProperties = {
             @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),// 是否开启断路器
             @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),// 请求次数

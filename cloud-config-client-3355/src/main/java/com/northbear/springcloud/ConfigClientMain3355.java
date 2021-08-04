@@ -2,17 +2,18 @@ package com.northbear.springcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * @auther northBear
  * @Description
- * @create 2021/8/2 16:02
+ * @create 2021/8/3 19:20
  */
 @SpringBootApplication
-@EnableHystrixDashboard
-public class HystrixDashboardMain9001 {
+@EnableEurekaClient
+public class ConfigClientMain3355 {
     public static void main(String[] args) {
-        SpringApplication.run(HystrixDashboardMain9001.class);
+        SpringApplication.run(ConfigClientMain3355.class);
     }
+
 }

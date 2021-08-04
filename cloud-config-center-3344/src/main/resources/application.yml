@@ -8,13 +8,13 @@ spring:
     config:
       server:
         git:
-          uri:
+          uri: https://github.com/Abs985/springcloud-config.git
           search-paths:
             - springcloud-config
         # 读取分支
-      label: master
+        default-label: main
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:7001/ereka
+      defaultZone: http://localhost:7001/eureka
